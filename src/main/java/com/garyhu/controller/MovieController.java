@@ -1,9 +1,13 @@
 package com.garyhu.controller;
 
 import com.garyhu.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,22 +22,38 @@ import java.util.List;
 @RequestMapping("/movie")
 public class MovieController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
+
     @Autowired
     RestTemplate restTemplate;
 
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
     @GetMapping("/{id}")
     public User getUser(@PathVariable Integer id){
 
-        User user = restTemplate.getForObject("http://localhost:8000/user/" + id, User.class);
+        User user = restTemplate.getForObject("http://microservice-simple-provider-user/user/" + id, User.class);
 
         return user;
     }
 
+    /**
+     * 获取microservice-simple-provider-user服务的信息并返回
+     * @return
+     */
     @GetMapping("/movie-instance")
     public List<ServiceInstance> showInfo(){
-        return this.discoveryClient.getInstances("microservice-simple-consumer-movie");
+        return this.discoveryClient.getInstances("microservice-simple-provider-user");
+    }
+
+    @GetMapping("/log-instance")
+    public void logUserInstance(){
+        ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-simple-provider-user");
+        // 打印当前选择的是哪个节点
+        LOGGER.info("{}:{}:{}",serviceInstance.getServiceId(),serviceInstance.getHost(),serviceInstance.getPort());
     }
 }
