@@ -34,6 +34,13 @@ info:
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://localhost:8761/eureka/
+         # 注册到集群上，也可以只注册一个，因为多个Eureka Server之间的数据会互相同步
+         defaultZone: http://garyhu:pass123@peer1:8761/eureka/,http://garyhu:pass123@peer2:8762/eureka/
       instance:
          prefer-ip-address: true #表示将自己的Ip注册到Eureka Server上
+         metadata-map:
+            my-metadata: 我自定义的元数据
+            name: ll
+      # 开启健康检查
+      healthcheck:
+         enabled: true
