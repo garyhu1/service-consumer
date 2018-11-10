@@ -58,6 +58,13 @@
       <artifactId>spring-cloud-starter-eureka</artifactId>
     </dependency>
 
+    <!--Ribbon-->
+    <!--由于spring-cloud-starter-eureka已经包含了ribbon，所以此处就不再添加-->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.cloud</groupId>-->
+      <!--<artifactId>spring-cloud-starter-ribbon</artifactId>-->
+    <!--</dependency>-->
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
