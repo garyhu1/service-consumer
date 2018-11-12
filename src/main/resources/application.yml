@@ -44,3 +44,7 @@ eureka:
       # 开启健康检查
       healthcheck:
          enabled: true
+# Ribbon配置，该配置是Ribbon脱离了Eureka
+#microservice-simple-provider-user:
+   #ribbon:
+      #listOfServers: localhost:8000,localhost:8001 #指定服务器IP

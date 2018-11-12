@@ -1,6 +1,7 @@
 package com.garyhu.controller;
 
 import com.garyhu.entity.User;
+import com.garyhu.feign.UserFeignClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class MovieController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    @Autowired
+    private UserFeignClient userFeignClient;
+
+
     @GetMapping("/{id}")
     public User getUser(@PathVariable Integer id){
 
@@ -56,4 +61,11 @@ public class MovieController {
         // 打印当前选择的是哪个节点
         LOGGER.info("{}:{}:{}",serviceInstance.getServiceId(),serviceInstance.getHost(),serviceInstance.getPort());
     }
+
+    // 测试Feign
+    @GetMapping("/feign/{id}")
+    public User findById(@PathVariable Integer id){
+        return userFeignClient.findById2(id);
+    }
+
 }
