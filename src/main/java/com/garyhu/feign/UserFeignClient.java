@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface UserFeignClient {
 
     // 备注： 此处的@PathVarivable没有添加“id”，就抛出PathVariable annotation was empty on param 0异常
-//    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-//    public User findById(@PathVariable("id") Integer id);
+    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
+    public User findById(@PathVariable("id") Integer id);
 
     /**
      * 使用feign自带的注解@RequestLine
@@ -28,6 +28,6 @@ public interface UserFeignClient {
      * @return 用户信息
      * @See https://github.com/OpenFeign/feign
      */
-    @RequestLine("GET /user/{id}")
-    public User findById2(@Param("id") Integer id);
+//    @RequestLine("GET /user/{id}")
+//    public User findById2(@Param("id") Integer id);
 }

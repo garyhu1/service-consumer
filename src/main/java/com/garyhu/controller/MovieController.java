@@ -87,7 +87,7 @@ public class MovieController {
     // 测试Feign
     @GetMapping("/feign/{id}")
     public User findById(@PathVariable Integer id){
-        return userFeignClient.findById2(id);
+        return userFeignClient.findById(id);
     }
 
 }

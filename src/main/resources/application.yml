@@ -23,6 +23,7 @@ logging:
       org.hibernate: INFO
       org.hibernate.type.descriptor.sql.BasicBinder: TRACE
       org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+      com.garyhu.feign.StudentFeignClient: DEBUG
 #配置下/info接口的信息
 info:
    app:
@@ -48,3 +49,10 @@ eureka:
 #microservice-simple-provider-user:
    #ribbon:
       #listOfServers: localhost:8000,localhost:8001 #指定服务器IP
+feign:
+   # 压缩
+   compression:
+      request:
+         enabled: true
+         mime-types: text/xml,application/xml,application/json     # 支持的媒体类型
+         min-request-size: 2048                                   # 设置请求的最小阈值
