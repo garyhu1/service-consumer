@@ -1,10 +1,14 @@
 package com.garyhu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,8 +18,9 @@ import org.springframework.web.client.RestTemplate;
  * @decription:
  */
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
+@EnableDiscoveryClient// 服务发现
+@EnableFeignClients// feign
+@EnableHystrix// hystrix容错 或者使用注解@EnableCircuitBreaker
 public class MovieApplication {
 
     public static void main(String[] args) throws Exception{

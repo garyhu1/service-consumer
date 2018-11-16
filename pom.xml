@@ -71,6 +71,12 @@
       <artifactId>spring-cloud-starter-feign</artifactId>
     </dependency>
 
+    <!--hystrix-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-hystrix</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
