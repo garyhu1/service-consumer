@@ -59,3 +59,7 @@ feign:
    # 全局禁用Hystrix
    #hystrix:
       #enabled: false
+#一般单独开个项目来开启监控，此处只是演示配置，先注释了
+#turbine:
+   #appConfig: PersonalProject,microservice-simple-provider-user  # 监控指定的微服务
+   #clusterNameExpression: "'default'"
