@@ -89,6 +89,12 @@
       <artifactId>spring-cloud-starter-turbine</artifactId>
     </dependency>
 
+    <!--Zuul服务网关-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zuul</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
