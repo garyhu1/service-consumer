@@ -3,6 +3,7 @@ package com.garyhu.feign;
 import com.garyhu.entity.Student;
 import com.garyhu.pojo.Result;
 import config.FeignConfiguration;
+import config.FeignDisableHystrixConfiguration;
 import feign.RequestLine;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,12 @@ import java.util.Map;
  * @since: 2018/11/15 0015
  * @decription:
  */
-@FeignClient(name = "PersonalProject",configuration = FeignConfiguration.class)
+// feign声明式用+回退配置，FeignClientCallback实现回退的方法
+//@FeignClient(name = "PersonalProject",fallback = FeignClientCallback.class,configuration = FeignConfiguration.class)
+// feign声明式用+回退+打印日志配置
+@FeignClient(name = "PersonalProject",fallbackFactory = FeignClientCallbackFactory.class,configuration = FeignConfiguration.class)
+// feign禁用hystrix
+//@FeignClient(name = "PersonalProject",configuration = FeignDisableHystrixConfiguration.class)
 public interface StudentFeignClient {
 
     @RequestMapping(value = "/getStudent",method = RequestMethod.GET)

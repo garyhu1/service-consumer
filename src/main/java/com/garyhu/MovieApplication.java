@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient// 服务发现
 @EnableFeignClients// feign
+// 只要Hystrix在项目的classpath中，Feign就会使用短路器包裹Feign客户端的所有方法
 @EnableHystrix// hystrix容错 或者使用注解@EnableCircuitBreaker
 public class MovieApplication {
 

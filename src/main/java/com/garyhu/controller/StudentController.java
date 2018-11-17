@@ -58,6 +58,7 @@ public class StudentController {
 
     @HystrixCommand(fallbackMethod = "studentFallback",commandProperties = {
             @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="5000"),
+//            @HystrixProperty(name="execution.isolation.strategy",value="SEMAPHORE"),// 设置隔离策略，两种，默认为THREAD
             @HystrixProperty(name="metrics.rollingStats.timeInMilliseconds",value="10000")
     },threadPoolProperties = {
             @HystrixProperty(name="coreSize",value="1"),
