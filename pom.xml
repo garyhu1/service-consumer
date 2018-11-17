@@ -77,6 +77,18 @@
       <artifactId>spring-cloud-starter-hystrix</artifactId>
     </dependency>
 
+    <!--hystrix dashboard 让监控数据图形化、可视化-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+    </dependency>
+
+    <!--使用turbine监控多个微服务-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-turbine</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
