@@ -1,5 +1,6 @@
 package com.garyhu;
 
+import com.garyhu.zuulfilter.PreRequestLogFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -40,5 +41,10 @@ public class MovieApplication {
     @LoadBalanced // 客户端负载均衡
     public RestTemplate restTemplate(){
         return new RestTemplate();
+    }
+
+    @Bean
+    public PreRequestLogFilter preRequestLogFilter(){
+        return new PreRequestLogFilter();
     }
 }

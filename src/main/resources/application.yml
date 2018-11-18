@@ -80,13 +80,3 @@ zuul:
          # 为personalproject指定敏感Header,会覆盖全局的敏感配置
          sensitive-headers: Cookie,Set-Cookie,Authorization
       #personalproject: /getStudent   # 指定代理的微服务 该方式跟user-route配置一样
-hytrix:
-   command:
-      default:
-         execution:
-            isolation:
-               thread:
-                  timeoutInMilliseconds: 60000
-ribbon:
-   ConnectTimeout: 3000
-   ReadTimeout: 60000
