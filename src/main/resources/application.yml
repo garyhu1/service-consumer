@@ -80,3 +80,7 @@ zuul:
          # 为personalproject指定敏感Header,会覆盖全局的敏感配置
          sensitive-headers: Cookie,Set-Cookie,Authorization
       #personalproject: /getStudent   # 指定代理的微服务 该方式跟user-route配置一样
+# sidecar是用来整合异构语言的，此处只是加点配置，最好另外开个微服务项目来整合
+#sidecar:
+   #port: 8060                                          # Node.js微服务的端口号
+   #health-uri: http://localhost:8060/health.json      # Node.js微服务的健康检查URL

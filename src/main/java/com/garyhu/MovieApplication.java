@@ -8,6 +8,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.sidecar.EnableSidecar;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -27,6 +28,8 @@ import org.springframework.web.client.RestTemplate;
 // 使用turbine监控多个微服务
 //@EnableTurbine
 @EnableZuulProxy
+// 开启sidecar是用来整合异构语言的，最好重构一个项目来整合
+//@EnableSidecar // 该注解整合了@EnableCircuitBreaker、@EnableZuulProxy、@EnableDiscoveryClient
 public class MovieApplication {
 
     public static void main(String[] args) throws Exception{
