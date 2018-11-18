@@ -101,6 +101,8 @@
       <artifactId>spring-cloud-netflix-sidecar</artifactId>
     </dependency>
 
+    <!---->
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
