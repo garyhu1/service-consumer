@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Scope;
 public class FeignDisableHystrixConfiguration {
 
     @Bean
-    @Scope("prototype")
+    @Scope("prototype")// 每次获取bean的时候都会有一个新的实例
     public Feign.Builder feignBuilder(){
         return Feign.builder();
     }

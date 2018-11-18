@@ -63,3 +63,30 @@ feign:
 #turbine:
    #appConfig: PersonalProject,microservice-simple-provider-user  # 监控指定的微服务
    #clusterNameExpression: "'default'"
+zuul:
+   #ignored-services: '*'             # 使用‘*’可忽略所用微服务，只代理下面routes指定的微服务
+   ignored-services: microservice-simple-provider-user
+   ignoredPatterns: /**/admin/**     # 忽略所有带/admin/的路径
+   # 可以指定全局敏感的Header
+   sensitive-headers: Cookie,Set-Cookie,Authorization
+   # 可以忽略一些Header,这样Header1和Header2就不会传播到其他的微服务中了，默认情况下ignored-headers为空
+   #ignored-headers: Header1,Header2
+   # 忽略某些header但是又需要使用下游的header时，可进行下面的配置
+   #ignoredSecurity-Headers: false
+   routes:
+      user-route:        # 该配置方式中，user-route只是路由一个名称，可以任意起
+         service-id: personalproject
+         path: /getStudent
+         # 为personalproject指定敏感Header,会覆盖全局的敏感配置
+         sensitive-headers: Cookie,Set-Cookie,Authorization
+      #personalproject: /getStudent   # 指定代理的微服务 该方式跟user-route配置一样
+hytrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 60000
+ribbon:
+   ConnectTimeout: 3000
+   ReadTimeout: 60000
