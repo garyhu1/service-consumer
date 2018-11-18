@@ -1,15 +1,14 @@
-package com.garyhu.zuulfilter;
+package com.garyhu.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.apache.http.protocol.RequestContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author : Administrator
+ * @author : garyhu
  * @decripetion : 自定义一个zuul过滤器，继承ZuulFilter
  * @since : 2018/11/18
  **/
