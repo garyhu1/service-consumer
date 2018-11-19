@@ -42,6 +42,10 @@ public class MovieApplication {
         return new RestTemplate();
     }
 
+    /**
+     * 自定义的Zuul过滤器
+     * @return
+     */
     @Bean
     public PreRequestLogFilter preRequestLogFilter(){
         return new PreRequestLogFilter();

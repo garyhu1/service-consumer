@@ -29,6 +29,9 @@ public interface StudentFeignClient {
     @RequestMapping(value = "/getStudent",method = RequestMethod.GET)
     public Result<Student> findById(@RequestParam(value = "id",required = true) Integer id);
 
+    @RequestMapping(value = "/myStudent",method = RequestMethod.GET)
+    public Result<Student> getStudent(@RequestParam(value = "id",required = true) Integer id);
+
     /**
      * 这里不可以使用@RequestBody
      * @param name

@@ -37,6 +37,17 @@ public class FeignClientCallbackFactory implements FallbackFactory<StudentFeignC
             }
 
             @Override
+            public Result<Student> getStudent(Integer id) {
+                FeignClientCallbackFactory.LOGGER.info("fallback reason was:",cause);
+                Student student = new Student();
+                student.setId(-1);
+                student.setName("默认用户");
+                student.setAge(-1);
+                Result result = ResponseUtils.success(student);
+                return result;
+            }
+
+            @Override
             public Result<Student> findByNameAndAge(String name, Integer age) {
                 FeignClientCallbackFactory.LOGGER.info("fallback reason was:",cause);
                 Student student = new Student();
