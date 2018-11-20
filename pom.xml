@@ -101,7 +101,17 @@
       <artifactId>spring-cloud-netflix-sidecar</artifactId>
     </dependency>
 
-    <!---->
+    <!--sleuth 微服务追踪-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+
+    <!--sleuth zipkin-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>

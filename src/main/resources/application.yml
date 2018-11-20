@@ -17,6 +17,11 @@ spring:
          max-idle: 8
          min-idle: 8
          initial-size: 10
+   zipkin:
+      base-url: http://localhost:9411 # 指定zipkin的地址
+   sleuth:
+      sampler:
+         percentage: 1.0   # 指定需采样的请求百分比，默认值是0.1，即10%
 logging:
    level:
       root: INFO
@@ -24,6 +29,8 @@ logging:
       org.hibernate.type.descriptor.sql.BasicBinder: TRACE
       org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
       com.garyhu.feign.StudentFeignClient: DEBUG
+      org.springframework.web.servlet.DispatcherServlet: DEBUG
+      org.springframework.cloud.sleuth: DEBUG
 #配置下/info接口的信息
 info:
    app:
