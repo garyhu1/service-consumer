@@ -17,11 +17,21 @@ spring:
          max-idle: 8
          min-idle: 8
          initial-size: 10
-   zipkin:
-      base-url: http://localhost:9411 # 指定zipkin的地址
+   # 采用消息中间件来收集时，注释该配置
+   #zipkin:
+      #base-url: http://localhost:9411 # 指定zipkin的地址
+   rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      passwrod: guest
    sleuth:
       sampler:
          percentage: 1.0   # 指定需采样的请求百分比，默认值是0.1，即10%
+   cloud:
+      loadbalancer:
+         retry:
+            enabled: true   # 默认false，即不开启重试 ；true开启重试
 logging:
    level:
       root: INFO
@@ -41,11 +51,19 @@ info:
          target: @java.version@
 eureka:
    client:
+      registry-fetch--interval-seconds: 30 # 缓存清单的更新时间；默认为30s
       serviceUrl:
          # 注册到集群上，也可以只注册一个，因为多个Eureka Server之间的数据会互相同步
          defaultZone: http://garyhu:pass123@peer1:8761/eureka/,http://garyhu:pass123@peer2:8762/eureka/
       instance:
+         lease-renewal-interval-in-seconds: 30    # 定义服务续约任务的调用时间间隔，即心跳；默认为30s
+         lease-expiration-duration-in-seconds: 90   # 定义服务失效的时间 ；默认为90s
          prefer-ip-address: true #表示将自己的Ip注册到Eureka Server上
+         # 修改端点采用的是相对路径，因为注册中心默认采用HTTP方式访问，如果采用HTTPS时，需要采用绝对路径
+         #statusPageUrlPath: https://${eureka.instance.hostname}/info   # 绝对路径
+         #healthCheckUrlPath: https://${eureka.instance.hostname}/health   # 绝对路径
+         statusPageUrlPath: /appInfo          # 修改原始/info端点
+         healthCheckUrlPath: /checkHealth     # 修改原始/health端点
          metadata-map:
             my-metadata: 我自定义的元数据
             name: ll
@@ -91,3 +109,17 @@ zuul:
 #sidecar:
    #port: 8060                                          # Node.js微服务的端口号
    #health-uri: http://localhost:8060/health.json      # Node.js微服务的健康检查URL
+PersonalProject:
+   ribbon:
+      ConnectTimeout: 250   # 连接超时必须小于断路器的超时时间
+      ReadTimeout: 1000
+      OkToRetryOnAllOperations: true  # 对所有操作请求都进行重试
+      MaxAutoRetriesNextServer: 2     # 切换实例的重试次数
+      MaxAutoRetries: 1                # 对当前实例的重试次数
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 10000

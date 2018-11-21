@@ -74,7 +74,7 @@ public class MovieController {
      */
     @GetMapping("/movie-instance")
     public List<ServiceInstance> showInfo(){
-        return this.discoveryClient.getInstances("microservice-simple-provider-user");
+        return this.discoveryClient.getInstances("microservice-simple-consumer-movie");
     }
 
     @GetMapping("/log-instance")
