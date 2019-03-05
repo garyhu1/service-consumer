@@ -32,6 +32,11 @@ spring:
       loadbalancer:
          retry:
             enabled: true   # 默认false，即不开启重试 ；true开启重试
+   data:
+      elasticsearch:
+         cluster-nodes: 127.0.0.1:9300
+         transport-client:
+            client-transport-sniff: false
 logging:
    level:
       root: INFO

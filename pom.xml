@@ -125,6 +125,24 @@
       <!--<artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
     <!--</dependency>-->
 
+    <!--elasticsearch-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-elasticsearch</artifactId>
+      <version>2.1.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>transport</artifactId>
+      <version>6.0.1</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

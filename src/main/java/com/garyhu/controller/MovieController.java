@@ -2,21 +2,12 @@ package com.garyhu.controller;
 
 import com.garyhu.entity.User;
 import com.garyhu.feign.UserFeignClient;
-import feign.Client;
-import feign.Contract;
-import feign.Feign;
-import feign.auth.BasicAuthRequestInterceptor;
-import feign.codec.Decoder;
-import feign.codec.Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.cloud.netflix.feign.FeignClientsConfiguration;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
